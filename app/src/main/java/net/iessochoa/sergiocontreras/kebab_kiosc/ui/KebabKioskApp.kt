@@ -6,14 +6,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.screens.OrderScreen
-import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioscTheme
+import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 
 // Si, he escrito mal el nombre del proyecto kiosc y no kiosk...
 // Aquí intento apañarlo
 
 @Composable
 fun KebabKioskApp(){
-    KebabkioscTheme {
+    KebabkioskTheme {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
             OrderScreen(
                 modifier = Modifier.padding(innerPadding)

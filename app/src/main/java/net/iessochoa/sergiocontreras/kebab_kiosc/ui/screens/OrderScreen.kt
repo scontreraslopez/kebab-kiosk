@@ -17,7 +17,7 @@ import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.BreadSelector
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.MeatSelector
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.SectionTitle
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.ToppingsList
-import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioscTheme
+import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -87,7 +87,7 @@ fun OrderScreen(
 @Preview(showBackground = true)
 @Composable
 fun OrderScreenPreview() {
-    KebabkioscTheme() {
+    KebabkioskTheme() {
         OrderScreen()
     }
 }

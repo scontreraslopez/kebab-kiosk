@@ -19,6 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "kebab-kiosc"
+rootProject.name = "kebab-kiosk"
 include(":app")
- 
