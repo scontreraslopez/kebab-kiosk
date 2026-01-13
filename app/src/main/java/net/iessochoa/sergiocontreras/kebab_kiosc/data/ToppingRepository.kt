@@ -54,5 +54,4 @@ object ToppingRepository {
     fun getAllToppings() = toppings.toList()
     fun getRandomTopping() = toppings[Random.nextInt(toppings.size)]
 
-
 }

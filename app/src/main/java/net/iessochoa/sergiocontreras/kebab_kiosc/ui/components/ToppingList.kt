@@ -17,27 +17,33 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import net.iessochoa.sergiocontreras.kebab_kiosc.ui.screens.Topping
+import net.iessochoa.sergiocontreras.kebab_kiosc.data.ToppingRepository
+import net.iessochoa.sergiocontreras.kebab_kiosc.model.Topping
+import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 
 
+/**
+ * Composable que proporciona una lista seleccionable de toppings.
+ *
+ * Muestra cada topping con su nombre, precio (si aplica) y un checkbox para seleccionar/deseleccionar.
+ * El fondo cambia de color cuando el topping está seleccionado.
+ *
+ * @param toppings Lista de toppings disponibles a mostrar
+ * @param selectedToppings Conjunto de toppings actualmente seleccionados
+ * @param onToppingToggled Callback invocado cuando se selecciona/deselecciona un topping
+ */
 @Composable
 fun ToppingsList(
+    toppings: List<Topping>,
     selectedToppings: Set<Topping>,
     onToppingToggled: (Topping, Boolean) -> Unit
 ) {
-    val allToppings = Topping.values()
 
     Column {
-        allToppings.forEach { topping ->
+        toppings.forEach { topping ->
             val isChecked = selectedToppings.contains(topping)
-            val name = when(topping) {
-                Topping.SAUCE_WHITE -> "Salsa Blanca"
-                Topping.SAUCE_RED -> "Salsa Roja (Picante)"
-                Topping.EGG -> "Huevo"
-                Topping.PISTACHIOS -> "Pistachos (Crujiente)"
-                Topping.PRAWNS -> "Gambas (Mar y Montaña)"
-            }
 
             Row(
                 modifier = Modifier
@@ -55,7 +61,7 @@ fun ToppingsList(
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Column {
-                    Text(text = name, style = MaterialTheme.typography.bodyLarge)
+                    Text(text = topping.name, style = MaterialTheme.typography.bodyLarge)
                     if (topping.price > 0) {
                         Text(
                             text = "+${String.format("%.2f", topping.price)}€",
@@ -66,5 +72,14 @@ fun ToppingsList(
                 }
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ToppingListPreview() {
+    KebabkioskTheme() {
+        val toppings = ToppingRepository.getAllToppings()
+        ToppingsList(toppings, setOf(toppings.first()), { _, _ -> })
     }
 }

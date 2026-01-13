@@ -19,8 +19,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.iessochoa.sergiocontreras.kebab_kiosc.data.ToppingRepository
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.BreadType
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.MeatType
+import net.iessochoa.sergiocontreras.kebab_kiosc.model.Topping
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.BreadSelector
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.MeatSelector
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.SectionTitle
@@ -42,6 +44,9 @@ fun OrderScreen(
     val breadPrice = selectedBread.basePrice
     val toppingsPrice = selectedToppings.sumOf { it.price }
     val totalPrice = breadPrice + toppingsPrice
+
+    // No es inyección de dependencias pero bueno
+    val toppings = ToppingRepository.getAllToppings()
 
     Column (
         modifier = modifier
@@ -81,6 +86,7 @@ fun OrderScreen(
         SectionTitle("3. Salsas y Extras")
         ToppingsList(
             selectedToppings = selectedToppings,
+            toppings = toppings,
             onToppingToggled = { topping, isChecked ->
                 // Lógica de conjuntos "a mano" dentro de la vista
                 val currentSet = selectedToppings.toMutableSet()
