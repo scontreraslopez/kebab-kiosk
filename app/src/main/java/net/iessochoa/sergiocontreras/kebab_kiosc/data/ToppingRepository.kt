@@ -3,7 +3,6 @@ package net.iessochoa.sergiocontreras.kebab_kiosc.data
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.AllergenType
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.Topping
 import kotlin.random.Random
-import kotlin.random.nextInt
 
 
 object ToppingRepository {
@@ -13,7 +12,7 @@ object ToppingRepository {
             name = "Salsa Blanca",
             price = 0.0,
             allergens = listOf(
-                AllergenType.LACTEOS
+                AllergenType.DAIRY
             )
         ),
         Topping(
@@ -21,7 +20,7 @@ object ToppingRepository {
             name = "Salsa Roja (Picante)",
             price = 0.0,
             allergens = listOf(
-                AllergenType.PICANTE
+                AllergenType.SPICY
             )
         ),
         Topping(
@@ -29,7 +28,7 @@ object ToppingRepository {
             name = "Huevo",
             price = 0.50,
             allergens = listOf(
-                AllergenType.HUEVO
+                AllergenType.EGG
             )
         ),
         Topping(
@@ -37,7 +36,7 @@ object ToppingRepository {
             name = "Pistachos (Crujiente)",
             price = 1.20,
             allergens = listOf(
-                AllergenType.FRUTOS_SECOS
+                AllergenType.NUTS
             )
         ),
         Topping(
@@ -45,7 +44,7 @@ object ToppingRepository {
             name = "Gambas (Mar y Montaña)",
             price = 2.00,
             allergens = listOf(
-                AllergenType.MARISCOS
+                AllergenType.SEAFOOD
             )
         )
     )

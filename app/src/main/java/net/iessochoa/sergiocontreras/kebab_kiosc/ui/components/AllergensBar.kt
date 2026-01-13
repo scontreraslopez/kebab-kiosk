@@ -72,27 +72,27 @@ fun AllergensBar(allergens: List<AllergenType>, modifier: Modifier = Modifier) {
 private fun AllergenIcon(allergen: AllergenType) {
     // Aquí asignas el icono correspondiente a cada alérgeno.
     val (icon, label, color) = when (allergen) {
-        AllergenType.LACTEOS -> Triple(
+        AllergenType.DAIRY -> Triple(
             painterResource(R.drawable.milk), // Placeholder
             "Lácteos",
             Color(0xFF64B5F6) // Azul claro
         )
-        AllergenType.PICANTE -> Triple(
+        AllergenType.SPICY -> Triple(
             painterResource(R.drawable.spicy), // Placeholder
             "Picante",
             Color(0xFFE57373) // Rojo claro
         )
-        AllergenType.HUEVO -> Triple(
+        AllergenType.EGG -> Triple(
             painterResource(R.drawable.egg), // Placeholder
             "Huevo",
             Color(0xFFFFD54F) // Amarillo
         )
-        AllergenType.FRUTOS_SECOS -> Triple(
+        AllergenType.NUTS -> Triple(
             painterResource(R.drawable.peanut), // Placeholder
             "Frutos Secos",
             Color(0xFFA1887F) // Marrón claro
         )
-        AllergenType.MARISCOS -> Triple(
+        AllergenType.SEAFOOD -> Triple(
             painterResource(R.drawable.shrimp), // Placeholder
             "Mariscos",
             Color(0xFF4DB6AC) // Teal
@@ -128,11 +128,11 @@ private fun AllergenIcon(allergen: AllergenType) {
 private fun AllergensBarPreview() {
     // Muestra todos los alérgenos para la previsualización
     val allAllergens = listOf(
-        AllergenType.LACTEOS,
-        AllergenType.PICANTE,
-        AllergenType.HUEVO,
-        AllergenType.FRUTOS_SECOS,
-        AllergenType.MARISCOS
+        AllergenType.DAIRY,
+        AllergenType.SPICY,
+        AllergenType.EGG,
+        AllergenType.NUTS,
+        AllergenType.SEAFOOD
     )
     AllergensBar(allergens = allAllergens)
 }
