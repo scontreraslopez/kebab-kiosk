@@ -1,5 +1,6 @@
 package net.iessochoa.sergiocontreras.kebab_kiosc.ui.components
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -19,11 +20,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.iessochoa.sergiocontreras.kebab_kiosc.R
+import net.iessochoa.sergiocontreras.kebab_kiosc.model.BreadType
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 
 /**
@@ -45,7 +48,7 @@ fun BreadCard(
     title: String,
     price: String,
     isSelected: Boolean,
-    icon: ImageVector,
+    @DrawableRes icon: Int,
     onClick: () -> Unit
 ) {
     Card(
@@ -67,7 +70,7 @@ fun BreadCard(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
-                imageVector = icon,
+                painter = painterResource(icon),
                 contentDescription = null,
                 modifier = Modifier.size(48.dp),
                 tint = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray
@@ -82,12 +85,14 @@ fun BreadCard(
 @Preview(showBackground = true)
 @Composable
 private fun BreadCardPreview() {
+    val pita = BreadType.PITA
+    val formattedPitaPrice = String.format("%.2f €", pita.basePrice)
     KebabkioskTheme() {
         BreadCard(
-            title = "Pita",
-            price = "4.50€",
+            title = pita.name,
+            price = formattedPitaPrice,
             isSelected = true,
-            icon = ImageVector.vectorResource(R.drawable.baseline_fastfood_24),
+            icon = R.drawable.pita,
             onClick = {}
         )
     }

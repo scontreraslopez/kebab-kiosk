@@ -27,7 +27,6 @@ import net.iessochoa.sergiocontreras.kebab_kiosc.model.MeatType
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.Topping
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.BreadSelector
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.MeatSelector
-import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.SectionTitle
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.ToppingsList
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 
