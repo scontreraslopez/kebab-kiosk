@@ -127,7 +127,7 @@ fun OrderScreenPreview() {
 }
 */
 //enum class MeatType { VEAL, CHICKEN, MIXED }
-
+/*
 enum class Topping(val price: Double) {
     SAUCE_WHITE(0.0),
     SAUCE_RED(0.0),
@@ -135,3 +135,4 @@ enum class Topping(val price: Double) {
     PISTACHIOS(1.20),
     PRAWNS(2.00)
 }
+*/

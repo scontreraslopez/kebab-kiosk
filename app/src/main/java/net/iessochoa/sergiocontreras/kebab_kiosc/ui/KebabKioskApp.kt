@@ -8,9 +8,6 @@ import androidx.compose.ui.Modifier
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.screens.OrderScreen
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 
-// Si, he escrito mal el nombre del proyecto kiosc y no kiosk...
-// Aquí intento apañarlo
-
 @Composable
 fun KebabKioskApp(){
     KebabkioskTheme {
