@@ -7,12 +7,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.iessochoa.sergiocontreras.kebab_kiosc.R
-import net.iessochoa.sergiocontreras.kebab_kiosc.ui.screens.BreadType
+import net.iessochoa.sergiocontreras.kebab_kiosc.model.BreadType
+import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 
 @Composable
 fun BreadSelector(
+    breads: List<BreadType>,
     selectedBread: BreadType,
     onBreadSelected: (BreadType) -> Unit
 ) {
@@ -20,21 +23,28 @@ fun BreadSelector(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        BreadCard(
-            modifier = Modifier.weight(1f),
-            title = "PAN PITA",
-            price = "4.00€",
-            isSelected = selectedBread == BreadType.PITA,
-            icon = ImageVector.vectorResource(R.drawable.baseline_fastfood_24),
-            onClick = { onBreadSelected(BreadType.PITA) }
-        )
-        BreadCard(
-            modifier = Modifier.weight(1f),
-            title = "DURUM",
-            price = "5.50€",
-            isSelected = selectedBread == BreadType.DURUM,
-            icon = ImageVector.vectorResource(R.drawable.baseline_restaurant_24),
-            onClick = { onBreadSelected(BreadType.DURUM) }
+        breads.forEach { bread ->
+            val priceFormatted = String.format("%.2f €", bread.basePrice)
+            BreadCard(
+                modifier = Modifier.weight(1f),
+                title = bread.name,
+                price = priceFormatted,
+                isSelected = selectedBread == bread,
+                icon = ImageVector.vectorResource(R.drawable.baseline_fastfood_24),
+                onClick = { onBreadSelected(bread) }
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BreadSelectorPreview() {
+    KebabkioskTheme() {
+        BreadSelector(
+            breads = BreadType.entries,
+            selectedBread = BreadType.PITA,
+            onBreadSelected = {}
         )
     }
 }

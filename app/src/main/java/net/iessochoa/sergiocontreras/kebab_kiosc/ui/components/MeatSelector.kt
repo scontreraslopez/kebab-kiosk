@@ -16,38 +16,34 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import net.iessochoa.sergiocontreras.kebab_kiosc.ui.screens.MeatType
+import net.iessochoa.sergiocontreras.kebab_kiosc.model.MeatType
 
 @Composable
 fun MeatSelector(
+    meats: List<MeatType>,
     selectedMeat: MeatType,
     onMeatSelected: (MeatType) -> Unit
 ) {
-    val meats = listOf(
-        MeatType.VEAL to "Ternera",
-        MeatType.CHICKEN to "Pollo",
-        MeatType.MIXED to "Mixto"
-    )
 
     Column {
-        meats.forEach { (type, label) ->
+        meats.forEach { meat ->
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp)
                     .selectable(
-                        selected = (selectedMeat == type),
-                        onClick = { onMeatSelected(type) }
+                        selected = (selectedMeat == meat),
+                        onClick = { onMeatSelected(meat) }
                     )
                     .padding(horizontal = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 RadioButton(
-                    selected = (selectedMeat == type),
+                    selected = (selectedMeat == meat),
                     onClick = null
                 )
                 Spacer(modifier = Modifier.width(16.dp))
-                Text(text = label, style = MaterialTheme.typography.bodyLarge, fontSize = 18.sp)
+                Text(text = meat.displayName, style = MaterialTheme.typography.bodyLarge, fontSize = 18.sp)
             }
         }
     }
