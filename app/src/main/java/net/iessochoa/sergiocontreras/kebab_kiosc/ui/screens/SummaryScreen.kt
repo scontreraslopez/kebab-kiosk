@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.SummaryItem
+import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 
 
 @Composable
@@ -70,6 +70,23 @@ fun OrderSummary(
         }
     }
 }
+
+
+@Composable
+private fun SummaryItem(label: String, value: String) {
+    Row(modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = "$label: ",
+            style = MaterialTheme.typography.bodyLarge,
+            fontWeight = FontWeight.Bold
+        )
+        Text(
+            text = value,
+            style = MaterialTheme.typography.bodyLarge
+        )
+    }
+}
+
 
 
 // Preview para ver el resultado en Android Studio
@@ -126,5 +143,15 @@ fun BottomOrderBar(
 
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun SummaryItemPreview() {
+    KebabkioskTheme() {
+        SummaryItem(
+            label = "Carne", value = "carne"
+        )
     }
 }

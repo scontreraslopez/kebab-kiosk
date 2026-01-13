@@ -25,14 +25,14 @@ import net.iessochoa.sergiocontreras.kebab_kiosc.R
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.AllergenType
 
 
-// --- CÓDIGO NUEVO Y MODIFICADO ---
-
-// Define los tipos de alérgenos para que sea más fácil de manejar
-
 /**
- * Muestra una barra horizontal con los alérgenos presentes en el pedido.
+ * Composable que muestra una barra visual de los alérgenos presentes en un elemento.
  *
- * @param allergens Lista de `AllergenType` a mostrar.
+ * Renderiza cada alérgeno con un icono circular coloreado y su etiqueta. Solo se muestra
+ * si la lista de alérgenos no está vacía.
+ *
+ * @param allergens Lista de alérgenos a mostrar
+ * @param modifier Modificador opcional para personalizar el layout
  */
 @Composable
 fun AllergensBar(allergens: List<AllergenType>, modifier: Modifier = Modifier) {
@@ -60,6 +60,14 @@ fun AllergensBar(allergens: List<AllergenType>, modifier: Modifier = Modifier) {
     }
 }
 
+/**
+ * Componente privado que renderiza un icono circular para un alérgeno específico.
+ *
+ * Muestra el icono correspondiente al tipo de alérgeno con un fondo coloreado y su etiqueta.
+ * Los colores se asignan según el tipo de alérgeno.
+ *
+ * @param allergen Tipo de alérgeno a renderizar
+ */
 @Composable
 private fun AllergenIcon(allergen: AllergenType) {
     // Aquí asignas el icono correspondiente a cada alérgeno.
@@ -117,7 +125,7 @@ private fun AllergenIcon(allergen: AllergenType) {
 
 @Preview(showBackground = true, name = "Allergens Bar Preview")
 @Composable
-fun AllergensBarPreview() {
+private fun AllergensBarPreview() {
     // Muestra todos los alérgenos para la previsualización
     val allAllergens = listOf(
         AllergenType.LACTEOS,
