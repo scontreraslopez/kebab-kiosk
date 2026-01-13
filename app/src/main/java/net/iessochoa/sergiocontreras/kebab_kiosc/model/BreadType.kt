@@ -1,5 +1,8 @@
 package net.iessochoa.sergiocontreras.kebab_kiosc.model
 
+import androidx.annotation.DrawableRes
+import net.iessochoa.sergiocontreras.kebab_kiosc.R
+
 /**
  * Project: kebab-kiosk
  * From: net.iessochoa.sergiocontreras.kebab_kiosc.model
@@ -8,7 +11,12 @@ package net.iessochoa.sergiocontreras.kebab_kiosc.model
  * Creado en Settings -> Editor -> File and Code Templates
  */
 
-enum class BreadType(val id: String, val displayName: String, val basePrice: Double) {
-    PITA("pita", "Pita", 4.00),
-    DURUM("durum", "Dürüm", 5.50)
+enum class BreadType(
+    val id: String,
+    val displayName: String,
+    @param:DrawableRes val icon: Int,
+    val basePrice: Double,
+) {
+    PITA("pita", "Pita", R.drawable.pita, 4.00),
+    DURUM("durum", "Dürüm", R.drawable.durum, 5.50)
 }
