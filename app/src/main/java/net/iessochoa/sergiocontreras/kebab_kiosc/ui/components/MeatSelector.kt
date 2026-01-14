@@ -20,6 +20,26 @@ import androidx.compose.ui.unit.sp
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.MeatType
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 
+/**
+ * Selector vertical de carnes.
+ *
+ * Muestra una lista de opciones (`RadioButton` + texto) construidas a partir
+ * de la colección `meats`. No mantiene estado interno: la opción seleccionada
+ * se comunica mediante el parámetro `selectedMeat` y la lambda `onMeatSelected`.
+ *
+ * Detalles de comportamiento:
+ * - Cada fila ocupa el ancho completo y tiene una altura fija (56.dp).
+ * - La fila es `selectable` para soportar interacción y accesibilidad; el
+ *   `RadioButton` se marca según `selectedMeat == meat`.
+ * - No realiza formateo adicional ni operaciones caras; es una vista simple y
+ *   reutilizable que delega la gestión del estado al llamador.
+ *
+ * @param meats Lista de `MeatType` a mostrar como opciones.
+ * @param selectedMeat La carne actualmente seleccionada (para marcar el radio correspondiente).
+ * @param onMeatSelected Lambda que se invoca cuando el usuario selecciona una opción;
+ *                       recibe el `MeatType` seleccionado.
+ * @param modifier Modifier opcional para personalizar el layout desde el exterior.
+ */
 @Composable
 fun MeatSelector(
     meats: List<MeatType>,
