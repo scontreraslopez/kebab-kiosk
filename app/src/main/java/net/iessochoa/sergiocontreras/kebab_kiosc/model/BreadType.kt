@@ -14,7 +14,6 @@ import net.iessochoa.sergiocontreras.kebab_kiosc.R
  * @property icon Recurso drawable que representa visualmente el pan
  * @property basePrice Precio base del pan en euros
  */
-@Suppress("unused")
 enum class BreadType(
     val id: String,
     val displayName: String,
