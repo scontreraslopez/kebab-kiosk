@@ -54,7 +54,7 @@ fun SummaryScreen(
         Spacer(modifier = Modifier.height(16.dp))
         BottomOrderBar(
             totalPrice = 6.40,
-            onNextClick = {}
+            onNextClick = { /* TODO IMPLEMENTAME PARA BONUS POINTS */}
         )
     }
 }

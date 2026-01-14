@@ -111,7 +111,7 @@ fun OrderScreen(
         // TODO: (Recuperación - 6 puntos) Reemplaza este botón con el componente PrimaryButton reutilizable
         //  Debe mostrar "Confirmar Pedido" y ejecutar la acción correspondiente
         Button(
-            onClick = { },
+            onClick = { /* TODO QUE SERÁ QUE TIENE QUE HACER ESTE BOTÓN */},
         ) {
             Text("Confirmar Pedido")
         }
