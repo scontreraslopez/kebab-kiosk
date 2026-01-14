@@ -51,14 +51,9 @@ Objetivo: mejorar el layout de la app y demostrar comprensión de elevación de 
 
 ### Regla de oro (obligatoria)
 
-Los **componentes pequeños y reutilizables** (`BreadCard`, `BreadSelector`, `MeatSelector`, `ToppingsList`, `AllergensBar`, etc.) **nunca** deben recibir un `ViewModel`.
+Los **componentes pequeños y reutilizables** (`BreadCard`, `BreadSelector`, `MeatSelector`, `ToppingsList`, `AllergensBar`, etc.) **NUNCA** deben recibir un `ViewModel`. 
 
-- ✅ Correcto: el componente recibe **datos** y **lambdas**
-  - `fun BreadCard(bread: BreadType, selected: Boolean, onClick: () -> Unit)`
-- ❌ Incorrecto: el componente recibe el ViewModel
-  - `fun BreadCard(viewModel: OrderScreenViewModel)`
-
-> El `ViewModel` solo se permite en pantallas “grandes” (`OrderScreen`, `SummaryScreen`) o en el “cableado” del `NavHost`.
+> El `ViewModel` solo se permite en pantallas completas (`OrderScreen`, `SummaryScreen`) o en el “cableado” del `NavHost`. En las screens se valora positivamente utilizar uiState + callbacks necesarios. Salvemos al soldado "preview". 
 
 ---
 
@@ -183,8 +178,15 @@ Implementar navegación entre `OrderScreen` y `SummaryScreen` usando Navigation 
 
 ---
 
-## Extras (opcional, para subir nota dentro del apartado)
+## Extras (opcional, bonus)
 
-- Utilizar string resources
-- Meter un Toast al clickar pagar.
-- Navegar de vuelta al comprar
+- **String resources** — hasta **+0.5 pts**
+  - Sustituye strings hardcoded por recursos en `strings.xml`.
+
+- **Flujo de compra (Toast + reset + back)** — hasta **+1.0 pts**
+  - Al pulsar **PAGAR** en `SummaryScreen`:
+    - Mostrar un `Toast` de confirmación de compra.
+    - Reiniciar el estado del pedido para volver al inicio limpio.
+    - Navegar de vuelta a `OrderScreen` (popBackStack hasta startDestination o navigate con `popUpTo` inclusive).
+  - Evita bucles de navegación y deja el estado en valores iniciales.
+  - Si usas ViewModel compartido: expón un evento `onPay()` que limpie el estado y notifique a la UI.
