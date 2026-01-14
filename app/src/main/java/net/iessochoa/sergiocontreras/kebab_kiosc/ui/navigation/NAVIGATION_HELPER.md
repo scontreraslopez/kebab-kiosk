@@ -202,7 +202,7 @@ fun MyRecipesApp(
                     IconButton(onClick = navigateUp) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack, //Ten en cuenta que según la versión del ComposeBom puede que Icons no venga importado.
-                            contentDescription = stringResource(R.string.back_button) 
+                            contentDescription = stringResource(R.string.back_button)
                         )
                     }
                 }
@@ -222,7 +222,7 @@ fun MyRecipesApp(
 
 ## Serializable Edition
 
-Esta es tu receta de cocina para implementar navegación moderna (**Type-Safe**) aunque no tan moderna como **Navigation 3.0**, eso lo dejamos para el futuro, "los experimentos con gaseosa" como diría Eugine D'Orts. Si lo decides hacer con String-Routes pues también me va a servir, no voy a penalizarlo, pero por aprovechar la ocasión ya que prácticamente es lo mismo.
+Esta es tu receta de cocina para implementar navegación moderna (**Type-Safe**) aunque no tan moderna como **Navigation 3.0**, eso lo dejamos para el futuro, "los experimentos con gaseosa" como diría Eugine D'Orts. Para el examen lo más sensato es tirar de string routes, pero por si estás acostumbrado a esto.
 
 ### 🥘 Ingredientes Previos (Serializable edition)
 
