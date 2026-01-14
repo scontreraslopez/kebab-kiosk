@@ -60,6 +60,16 @@ object RecipeDetailDestination : NavigationDestination {
 }
 ```
 
+Nota interna de mejora. Lo de la interfaz es un poco cutre habiendo sealed class, es como lo hacían los codelabs y por no meter un cambio a estas alturas. Pero si alguien lo usa es tal que así. No es preciso, podemos ceñirnos al modo clásico. ¿Ventajas del sealed class? En el when no hay que meter un else artificial para empezar.
+
+```kotlin
+sealed class AppDestination(val route: String, val titleRes: Int) {
+    data object RecipeList : AppDestination("recipe_list", R.string.recipe_list_title)
+    data object RecipeDetail : AppDestination("recipe_detail", R.string.recipe_detail_title)
+}
+```
+
+
 -----
 
 ### 🍳 Paso 3: El `NavHost` (El Mapa de Carreteras)
