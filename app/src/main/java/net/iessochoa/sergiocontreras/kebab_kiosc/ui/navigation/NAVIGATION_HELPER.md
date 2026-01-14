@@ -114,6 +114,18 @@ fun MyRecipesNavHost(
 }
 ```
 
+Nota Arquitectónica (Future Self). Esto es **ajeno al examen** pero por si se consulta fuera de ese contexto.
+
+**Escenario: ViewModels dedicados por pantalla (sin grafos anidados):**
+
+- Instanciación: El ViewModel NO va en la firma del NavHost. Se instancia (viewModel()) dentro de cada composable individualmente.
+- Consecuencia (Estado NO compartido): Al ser instancias distintas, la memoria se pierde al navegar.
+- Solución: Es obligatorio pasar la información mediante argumentos de navegación (IDs en la ruta u objetos @Serializable).
+
+Alternativa Híbrida: Usar un único SharedViewModel para toda la app, pero exponiendo UiStates independientes (val listUiState, val detailUiState) para mantener el orden sin perder la memoria compartida.
+
+Grafos Anidados (Nested Navigation): Consiste en agrupar pantallas relacionadas (ej: Login, Checkout) en sub-grafos dentro de la navegación principal.
+
 -----
 
 ### 🍳 Paso 4: Integración en el `Scaffold` (`MyRecipesApp`)
