@@ -16,23 +16,34 @@ Además, hay esqueletos pendientes:
 
 ## 1) Recuperación (UI / Estilo) — 10 puntos
 
-Objetivo: mejorar el layout de la app sin cambiar su funcionalidad principal.
+**Tiempo estimado: 30 minutos**
+
+Objetivo: mejorar el layout de la app y demostrar comprensión de elevación de estado mediante componentes reutilizables.
 
 ### Requisitos (obligatorios)
 
-1. **Padding global de la app**
-   - Añadir un padding consistente a *toda la aplicación* para que se vea “estilizado”.
-   - Se recomienda hacerlo desde un punto común (`KebabKioskApp` / `Scaffold`) para no repetirlo en cada pantalla.
+> **Nota importante**: El componente `PrimaryButton` vale **6 puntos de 10** porque es lo que mejor demuestra si entiendes composición, reutilización y elevación de estado. Los ajustes de padding/centrado valen **4 puntos** en total.
 
-2. **Centrar los títulos**
-   - Los títulos de sección (por ejemplo `SectionTitle("1. Elige tu Pan")`) deben estar centrados horizontalmente.
+1. **Padding global de la app** *(3-5 min)* — **1.5 pts**
+   - Añadir un padding consistente a *toda la aplicación* para que se vea "estilizado".
+   - Debe hacerse desde un punto común (`KebabKioskApp` / `Scaffold`) para no repetirlo en cada pantalla.
+   - **Criterio clave**: evitar código duplicado, aplicar DRY (Don't Repeat Yourself).
 
-3. **Centrar el botón de Confirmar Pedido**
-   - El botón de `OrderScreen` debe quedar centrado y bien colocado (alineación/anchura coherente).
+2. **Centrar los títulos de sección** *(2-3 min)* — **1.5 pts**
+   - Todos los títulos de sección (ej: `SectionTitle("1. Elige tu Pan")`) deben estar centrados horizontalmente.
 
-4. **Añadir / integrar Botón Pagar**
-   - Debe existir un botón **PAGAR** visible y usable en el flujo.
-   - En el proyecto ya existe en `SummaryScreen` (`BottomOrderBar`). Se evaluará que esté integrado en el flujo final (no solo en preview).
+3. **Centrar el botón "Confirmar Pedido"** *(2-3 min)* — **1 pt**
+   - El botón de `OrderScreen` debe quedar centrado y bien colocado (alineación/anchura coherente, spacing apropiado).
+
+4. **Crear componente reutilizable `PrimaryButton`** *(15-20 min)* — **6 pts**
+   - Extraer un composable reutilizable para los botones principales de la app.
+   - El componente debe:
+     - Recibir el **texto** que se mostrará en el botón
+     - Recibir la **acción** que se ejecutará al hacer clic (como lambda)
+     - Aceptar un **modifier** opcional para flexibilidad
+     - Implementar un **estilo consistente** (colores, padding, esquinas redondeadas, etc.)
+   - Debe usarse tanto en "Confirmar Pedido" como en "PAGAR".
+   - **Criterio clave**: demuestra elevación de estado — el botón NO decide qué hace, recibe la acción como parámetro.
 
 ---
 
@@ -123,27 +134,27 @@ Implementar navegación entre `OrderScreen` y `SummaryScreen` usando Navigation 
 
 ### Recuperación UI (10 puntos)
 
-- **(3 pts)** Padding global aplicado y consistente
-  - 3: padding global bien centralizado (no repetido) y se ve correcto
-  - 2: padding aplicado pero repetido o inconsistente
-  - 1: padding mínimo / solo en una pantalla
+- **(1.5 pts)** Padding global aplicado y consistente
+  - 1.5: padding global bien centralizado (no repetido) y se ve correcto
+  - 0.75: padding aplicado pero repetido o inconsistente
   - 0: no se aprecia
 
-- **(2 pts)** Títulos centrados
-  - 2: centrado correcto en todas las secciones
-  - 1: centrado parcial / algunos títulos
+- **(1.5 pts)** Títulos centrados
+  - 1.5: centrado correcto en todas las secciones
+  - 0.75: centrado parcial / algunos títulos
   - 0: no centrado
 
-- **(3 pts)** Botón “Confirmar Pedido” centrado y bien alineado
-  - 3: alineación correcta, spacing y tamaño coherentes
-  - 2: centrado pero con problemas evidentes de diseño
-  - 1: mejora mínima respecto al estado inicial
-  - 0: sin cambios
+- **(1 pt)** Botón "Confirmar Pedido" centrado y bien alineado
+  - 1: alineación correcta, spacing y tamaño coherentes
+  - 0.5: centrado pero con problemas evidentes de diseño
+  - 0: sin cambios o mejora mínima
 
-- **(2 pts)** Botón “PAGAR” integrado en el flujo
-  - 2: aparece en pantalla resumen como parte del flujo navegable
-  - 1: existe pero no está conectado al flujo (solo preview o pantalla inaccesible)
-  - 0: no existe
+- **(6 pts)** Componente reutilizable `PrimaryButton`
+  - 6: componente correctamente implementado, usado en ambos botones (Confirmar + Pagar), demuestra elevación de estado (recibe `onClick` como lambda), estilo consistente y profesional
+  - 4-5: componente creado y usado en ambos lugares, pero con deficiencias menores (estilo mejorable o pequeños problemas de implementación)
+  - 2-3: componente creado pero solo usado en un lugar, o con problemas significativos de diseño/implementación
+  - 1: intento de crear componente pero con errores significativos que afectan la funcionalidad
+  - 0: no existe o botón "PAGAR" no integrado en el flujo
 
 ### MVVM (5 puntos)
 
@@ -176,3 +187,4 @@ Implementar navegación entre `OrderScreen` y `SummaryScreen` usando Navigation 
 
 - Utilizar string resources
 - Meter un Toast al clickar pagar.
+- Navegar de vuelta al comprar

@@ -11,7 +11,12 @@ import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 @Composable
 fun KebabKioskApp(){
     KebabkioskTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        // TODO: (Recuperación - 1.5 puntos) Añade un padding global y consistente aquí
+        //  para que toda la aplicación tenga márgenes profesionales.
+        //  Aplícalo desde este Scaffold para no repetirlo en cada pantalla (DRY).
+        Scaffold(modifier = Modifier
+            .fillMaxSize()
+        ) { innerPadding ->
             OrderScreen(
                 modifier = Modifier.padding(innerPadding)
             )

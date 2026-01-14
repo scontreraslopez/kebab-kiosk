@@ -149,6 +149,8 @@ fun BottomOrderBar(
                 )
             }
 
+            // TODO: Reemplaza este botón con el componente PrimaryButton reutilizable
+            //  Debe mostrar "PAGAR" y ejecutar onNextClick al hacer clic
             Button(
                 onClick = onNextClick,
                 modifier = Modifier.height(50.dp),
@@ -156,7 +158,6 @@ fun BottomOrderBar(
             ) {
                 Text("PAGAR", fontSize = 18.sp)
                 Spacer(modifier = Modifier.width(8.dp))
-
             }
         }
     }

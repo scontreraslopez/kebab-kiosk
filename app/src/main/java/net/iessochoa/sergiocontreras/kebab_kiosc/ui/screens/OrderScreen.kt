@@ -107,6 +107,9 @@ fun OrderScreen(
         HorizontalDivider()
         Spacer(modifier = Modifier.padding(top=16.dp))
 
+        // TODO: (Recuperación - 1 punto) Centra este botón horizontalmente
+        // TODO: (Recuperación - 6 puntos) Reemplaza este botón con el componente PrimaryButton reutilizable
+        //  Debe mostrar "Confirmar Pedido" y ejecutar la acción correspondiente
         Button(
             onClick = { },
         ) {
@@ -114,12 +117,13 @@ fun OrderScreen(
         }
 
 
-
     }
 }
 
 @Composable
 private fun SectionTitle(text: String) {
+    // TODO: (Recuperación - 1.5 puntos) Centra este título horizontalmente
+    //  usando el modifier apropiado para que todos los títulos de sección queden centrados
     Text(
         text = text,
         style = MaterialTheme.typography.headlineSmall,
