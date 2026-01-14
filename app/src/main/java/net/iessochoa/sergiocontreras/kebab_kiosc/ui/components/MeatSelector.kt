@@ -14,18 +14,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.MeatType
+import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 
 @Composable
 fun MeatSelector(
     meats: List<MeatType>,
     selectedMeat: MeatType,
-    onMeatSelected: (MeatType) -> Unit
+    onMeatSelected: (MeatType) -> Unit,
+    modifier: Modifier = Modifier
 ) {
 
-    Column {
+    Column (
+        modifier = modifier
+    )
+    {
         meats.forEach { meat ->
             Row(
                 modifier = Modifier
@@ -46,5 +52,18 @@ fun MeatSelector(
                 Text(text = meat.displayName, style = MaterialTheme.typography.bodyLarge, fontSize = 18.sp)
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun MeatSelectorPreview() {
+    KebabkioskTheme() {
+        MeatSelector(
+            meats = MeatType.entries,
+            selectedMeat = MeatType.MIXED,
+            onMeatSelected = {}
+        )
+
     }
 }

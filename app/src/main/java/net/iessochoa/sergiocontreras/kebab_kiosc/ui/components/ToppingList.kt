@@ -38,10 +38,13 @@ import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 fun ToppingsList(
     toppings: List<Topping>,
     selectedToppings: Set<Topping>,
-    onToppingToggled: (Topping, Boolean) -> Unit
+    onToppingToggled: (Topping, Boolean) -> Unit,
+    modifier: Modifier = Modifier
 ) {
 
-    Column {
+    Column(
+        modifier = modifier
+    ) {
         toppings.forEach { topping ->
             val isChecked = selectedToppings.contains(topping)
 
