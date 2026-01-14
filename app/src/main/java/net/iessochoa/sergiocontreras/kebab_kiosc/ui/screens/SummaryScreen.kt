@@ -22,14 +22,48 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import net.iessochoa.sergiocontreras.kebab_kiosc.data.ToppingRepository
+import net.iessochoa.sergiocontreras.kebab_kiosc.model.Topping
+import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.AllergensBar
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 
+
+@Composable
+fun SummaryScreen(
+    pan: String,
+    carne: String,
+    salsasYExtras: List<Topping>,
+    modifier: Modifier = Modifier
+) {
+
+    Column (
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+    ) {
+        OrderSummary(
+            pan = pan,
+            carne = carne,
+            salsasYExtras = salsasYExtras,
+            modifier = modifier
+        )
+        AllergensBar(
+            allergens = salsasYExtras.flatMap {it.allergens},
+            modifier = modifier
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        BottomOrderBar(
+            totalPrice = 6.40,
+            onNextClick = {}
+        )
+    }
+}
 
 @Composable
 fun OrderSummary(
     pan: String,
     carne: String,
-    salsasYExtras: List<String>,
+    salsasYExtras: List<Topping>,
     modifier: Modifier = Modifier // Añadimos un modifier para más flexibilidad
 ) {
     Card(
@@ -62,7 +96,7 @@ fun OrderSummary(
 
             // Sección de Salsas y Extras
             val extrasString = if (salsasYExtras.isNotEmpty()) {
-                salsasYExtras.joinToString(separator = ", ")
+                salsasYExtras.joinToString(separator = ", ") { it.name }
             } else {
                 "Ninguno"
             }
@@ -86,24 +120,6 @@ private fun SummaryItem(label: String, value: String) {
         )
     }
 }
-
-
-
-// Preview para ver el resultado en Android Studio
-@Preview(showBackground = true)
-@Composable
-fun OrderSummaryPreview() {
-    val panEjemplo = "Pan de pita"
-    val carneEjemplo = "Pollo"
-    val extrasEjemplo = listOf("Salsa de yogur", "Lechuga", "Cebolla", "Queso feta")
-
-    OrderSummary(
-        pan = panEjemplo,
-        carne = carneEjemplo,
-        salsasYExtras = extrasEjemplo
-    )
-}
-
 
 
 @Composable
@@ -138,7 +154,7 @@ fun BottomOrderBar(
                 modifier = Modifier.height(50.dp),
                 shape = RoundedCornerShape(12.dp)
             ) {
-                Text("RESUMEN", fontSize = 18.sp)
+                Text("PAGAR", fontSize = 18.sp)
                 Spacer(modifier = Modifier.width(8.dp))
 
             }
@@ -148,10 +164,70 @@ fun BottomOrderBar(
 
 @Preview(showBackground = true)
 @Composable
+private fun OrderSummaryPreview() {
+
+    /* Ojo como está acoplado esto aquí, pero para el preview tiramos */
+    val allToppings = ToppingRepository.getAllToppings()
+
+
+    val panEjemplo = "Pan de pita"
+    val carneEjemplo = "Pollo"
+    val extrasEjemplo = listOfNotNull(
+        allToppings.getOrNull(1),
+        allToppings.getOrNull(3),
+        allToppings.getOrNull(4)
+    )
+
+
+    OrderSummary(
+        pan = panEjemplo,
+        carne = carneEjemplo,
+        salsasYExtras = extrasEjemplo
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
 private fun SummaryItemPreview() {
     KebabkioskTheme() {
         SummaryItem(
             label = "Carne", value = "carne"
+        )
+    }
+}
+
+@Preview (showBackground = true)
+@Composable
+private fun BottomOrderBarPreview() {
+    KebabkioskTheme() {
+        BottomOrderBar(
+            totalPrice = 6.40,
+            onNextClick = {}
+        )
+    }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+private fun SummaryScreenPreview() {
+
+    /* Ojo como está acoplado esto aquí, pero para el preview tiramos */
+    val allToppings = ToppingRepository.getAllToppings()
+
+//    val extrasEjemplo = listOfNotNull(
+//        allToppings.getOrNull(1),
+//        allToppings.getOrNull(3),
+//        allToppings.getOrNull(4)
+//    )
+
+    val extrasEjemplo = allToppings
+
+    KebabkioskTheme() {
+        SummaryScreen(
+            pan = "Pan de pita",
+            carne = "Pollo",
+            salsasYExtras = extrasEjemplo
         )
     }
 }

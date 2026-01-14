@@ -35,7 +35,11 @@ import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 fun OrderScreen(
     modifier: Modifier = Modifier
 ) {
-    // --- ESTADO HARDCODEADO (El "pecado" que hay que refactorizar) ---
+
+    // No es inyección de dependencias pero cumple
+    val toppings = ToppingRepository.getAllToppings()
+
+    // --- ESTADO HARDCODEADO ---
     var selectedBread by remember { mutableStateOf(BreadType.PITA) }
     var selectedMeat by remember { mutableStateOf(MeatType.MIXED) }
     var selectedToppings by remember { mutableStateOf(emptySet<Topping>()) }
@@ -46,8 +50,6 @@ fun OrderScreen(
     val toppingsPrice = selectedToppings.sumOf { it.price }
     val totalPrice = breadPrice + toppingsPrice
 
-    // No es inyección de dependencias pero bueno
-    val toppings = ToppingRepository.getAllToppings()
 
     Column (
         modifier = modifier
@@ -136,21 +138,3 @@ fun OrderScreenPreview() {
     }
 }
 
-
-// --- MODELOS DE DATOS (Hardcodeados aquí mismo para el caos) ---
-
-/*enum class BreadType(val price: Double) {
-    PITA(4.50),
-    DURUM(5.50)
-}
-*/
-//enum class MeatType { VEAL, CHICKEN, MIXED }
-/*
-enum class Topping(val price: Double) {
-    SAUCE_WHITE(0.0),
-    SAUCE_RED(0.0),
-    EGG(0.50),
-    PISTACHIOS(1.20),
-    PRAWNS(2.00)
-}
-*/
