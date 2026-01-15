@@ -30,6 +30,7 @@ import net.iessochoa.sergiocontreras.kebab_kiosc.model.MeatType
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.Topping
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.BreadSelector
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.MeatSelector
+import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.PrimaryButton
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.ToppingsList
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 
@@ -119,12 +120,10 @@ fun OrderScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         )
         {
-            Button(
-                onClick =  onOrderConfirmed,
-
-                ) {
-                Text("Confirmar Pedido")
-            }
+            PrimaryButton(
+                text = "Confirmar Pedido",
+                onClick = onOrderConfirmed
+            )
         }
 
     }

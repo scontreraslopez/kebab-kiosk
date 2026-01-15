@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import net.iessochoa.sergiocontreras.kebab_kiosc.data.ToppingRepository
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.Topping
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.AllergensBar
+import net.iessochoa.sergiocontreras.kebab_kiosc.ui.components.PrimaryButton
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 
 
@@ -152,14 +153,10 @@ private fun BottomOrderBar(
 
             // TODO: Reemplaza este botón con el componente PrimaryButton reutilizable
             //  Debe mostrar "PAGAR" y ejecutar onNextClick al hacer clic
-            Button(
-                onClick = onNextClick,
-                modifier = Modifier.height(50.dp),
-                shape = RoundedCornerShape(12.dp)
-            ) {
-                Text("PAGAR", fontSize = 18.sp)
-                Spacer(modifier = Modifier.width(8.dp))
-            }
+            PrimaryButton(
+                text = "PAGAR",
+                onClick = onNextClick
+            )
         }
     }
 }
