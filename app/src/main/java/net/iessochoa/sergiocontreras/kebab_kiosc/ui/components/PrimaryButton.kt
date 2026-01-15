@@ -1,7 +1,15 @@
 package net.iessochoa.sergiocontreras.kebab_kiosc.ui.components
 
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 /**
  * TODO: Componente reutilizable PrimaryButton (Recuperación - 6 puntos)
@@ -26,6 +34,13 @@ fun PrimaryButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-
+    Button(
+        onClick = onClick,
+        modifier = modifier.height(50.dp),
+        shape = RoundedCornerShape(12.dp)
+    ) {
+        Text(text, fontSize = 18.sp)
+        Spacer(modifier = Modifier.width(8.dp))
+    }
 
 }
