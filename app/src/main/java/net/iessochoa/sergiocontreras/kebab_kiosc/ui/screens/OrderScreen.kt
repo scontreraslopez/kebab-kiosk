@@ -36,6 +36,7 @@ fun OrderScreen(
     uiState: OrderScreenUiState,
     onBreadSelected: (BreadType) -> Unit,
     onMeatSelected: (MeatType) -> Unit,
+    onToppingToggled: (Topping, Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -93,16 +94,7 @@ fun OrderScreen(
         ToppingsList(
             selectedToppings = selectedToppings,
             toppings = toppings,
-            onToppingToggled = { topping, isChecked ->
-                // Lógica de conjuntos "a mano" dentro de la vista
-                val currentSet = selectedToppings.toMutableSet()
-                if (isChecked) {
-                    currentSet.remove(topping) // Si ya estaba, lo quitamos (toggle)
-                } else {
-                    currentSet.add(topping) // Si no, lo ponemos
-                }
-                selectedToppings = currentSet // Actualizamos estado
-            }
+            onToppingToggled = onToppingToggled
         )
 
 
@@ -141,7 +133,12 @@ private fun SectionTitle(text: String) {
 @Composable
 fun OrderScreenPreview() {
     KebabkioskTheme() {
-        OrderScreen()
+        OrderScreen(
+            uiState = OrderScreenUiState(),
+            onBreadSelected = {},
+            onMeatSelected = {},
+            onToppingToggled = {_, _ ->}
+        )
     }
 }
 

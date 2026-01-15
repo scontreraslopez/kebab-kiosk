@@ -1,5 +1,6 @@
 package net.iessochoa.sergiocontreras.kebab_kiosc.ui.screens
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -7,6 +8,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.BreadType
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.MeatType
+import net.iessochoa.sergiocontreras.kebab_kiosc.model.Topping
 
 
 class OrderScreenViewModel: ViewModel() {
@@ -32,11 +34,18 @@ class OrderScreenViewModel: ViewModel() {
     }
 
 
-
-
-    fun onToppingToggled() {
-
-
+    fun onToppingToggled(topping: Topping, isChecked: Boolean) {
+        _uiState.update { currentState ->
+            if (isChecked) {
+                currentState.copy(
+                    selectedToppings = currentState.selectedToppings - topping
+                )
+            } else {
+                currentState.copy(
+                    selectedToppings = currentState.selectedToppings + topping
+                )
+            }
+        }
     }
 
 
