@@ -22,10 +22,16 @@ fun KebabKioskApp(
     navController: NavHostController = rememberNavController(), // Creamos el Controller
 ){
 
+
+    /* El bloque del título condicional no hace falta en el examen.
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = backStackEntry?.destination?.route
-
-    // El bloque del título condicional no hace falta en el examen.
+    val currentScreenTitle = when (currentRoute) {
+        RecipeListDestination.route -> stringResource(RecipeListDestination.titleRes)
+        RecipeDetailDestination.route -> stringResource(RecipeDetailDestination.titleRes)
+        else -> stringResource(R.string.app_name)
+    }
+    */
 
     // Pero el botón si que tiene que ser condicional a que la pila de navegación no vacía.
     val canNavigateBack = navController.previousBackStackEntry != null

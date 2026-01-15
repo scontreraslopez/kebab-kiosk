@@ -1,8 +1,10 @@
 package net.iessochoa.sergiocontreras.kebab_kiosc.ui.screens
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
@@ -17,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,6 +40,7 @@ fun OrderScreen(
     onBreadSelected: (BreadType) -> Unit,
     onMeatSelected: (MeatType) -> Unit,
     onToppingToggled: (Topping, Boolean) -> Unit,
+    onOrderConfirmed: () -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -105,12 +109,19 @@ fun OrderScreen(
         // TODO: (Recuperación - 1 punto) Centra este botón horizontalmente
         // TODO: (Recuperación - 6 puntos) Reemplaza este botón con el componente PrimaryButton reutilizable
         //  Debe mostrar "Confirmar Pedido" y ejecutar la acción correspondiente
-        Button(
-            onClick = { /* TODO QUE SERÁ QUE TIENE QUE HACER ESTE BOTÓN */},
-        ) {
-            Text("Confirmar Pedido")
-        }
+        Column (
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        )
+        {
+            Button(
+                onClick =  onOrderConfirmed,
 
+                ) {
+                Text("Confirmar Pedido")
+            }
+        }
 
     }
 }
@@ -137,7 +148,8 @@ fun OrderScreenPreview() {
             uiState = OrderScreenUiState(),
             onBreadSelected = {},
             onMeatSelected = {},
-            onToppingToggled = {_, _ ->}
+            onToppingToggled = {_, _ ->},
+            onOrderConfirmed = {}
         )
     }
 }
