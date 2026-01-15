@@ -1,5 +1,6 @@
 package net.iessochoa.sergiocontreras.kebab_kiosc.ui.screens
 
+import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -8,7 +9,7 @@ import net.iessochoa.sergiocontreras.kebab_kiosc.model.BreadType
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.MeatType
 
 
-class OrderScreenViewModel {
+class OrderScreenViewModel: ViewModel() {
 
     private val _uiState = MutableStateFlow(OrderScreenUiState())
     val uiState: StateFlow<OrderScreenUiState> = _uiState.asStateFlow()
