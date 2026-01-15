@@ -1,5 +1,8 @@
 package net.iessochoa.sergiocontreras.kebab_kiosc.ui.components
 
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+
 /**
  * TODO: Componente reutilizable PrimaryButton (Recuperación - 6 puntos)
  *
@@ -16,3 +19,13 @@ package net.iessochoa.sergiocontreras.kebab_kiosc.ui.components
  */
 
 // TODO: Implementa aquí el composable PrimaryButton
+
+@Composable
+fun PrimaryButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+
+
+}

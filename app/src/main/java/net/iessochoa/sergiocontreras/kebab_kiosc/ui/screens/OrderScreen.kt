@@ -58,9 +58,13 @@ fun OrderScreen(
 
     // --- LÓGICA DE NEGOCIO INCRUSTADA EN LA UI ---
     // Calculamos el precio en cada recomposición (ineficiente pero funciona)
+
+    /* MIGRADO AL VIEWMODEL
     val breadPrice = selectedBread.basePrice
     val toppingsPrice = selectedToppings.sumOf { it.price }
     val totalPrice = breadPrice + toppingsPrice
+    */
+
 
 
     Column (

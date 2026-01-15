@@ -33,6 +33,7 @@ fun SummaryScreen(
     pan: String,
     carne: String,
     salsasYExtras: List<Topping>,
+    totalPedido: Double,
     modifier: Modifier = Modifier
 ) {
 
@@ -53,7 +54,7 @@ fun SummaryScreen(
         )
         Spacer(modifier = Modifier.height(16.dp))
         BottomOrderBar(
-            totalPrice = 6.40,
+            totalPrice = totalPedido,
             onNextClick = { /* TODO IMPLEMENTAME PARA BONUS POINTS */}
         )
     }
@@ -228,7 +229,8 @@ private fun SummaryScreenPreview() {
         SummaryScreen(
             pan = "Pan de pita",
             carne = "Pollo",
-            salsasYExtras = extrasEjemplo
+            salsasYExtras = extrasEjemplo,
+            totalPedido = 6.40
         )
     }
 }

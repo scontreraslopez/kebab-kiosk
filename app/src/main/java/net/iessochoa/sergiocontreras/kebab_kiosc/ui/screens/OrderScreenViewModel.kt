@@ -48,9 +48,12 @@ class OrderScreenViewModel: ViewModel() {
         }
     }
 
+    fun calculateTotal(): Double {
 
+        val breadPrice = _uiState.value.selectedBread.basePrice
+        val toppingsPrice = _uiState.value.selectedToppings.sumOf { it.price }
+        return breadPrice + toppingsPrice
 
-
-
+    }
 
 }

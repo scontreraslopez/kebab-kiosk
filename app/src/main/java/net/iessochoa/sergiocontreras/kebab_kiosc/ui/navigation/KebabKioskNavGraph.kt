@@ -19,16 +19,16 @@ import net.iessochoa.sergiocontreras.kebab_kiosc.ui.screens.SummaryScreen
 @Composable
 fun KebabKioskNavGraph(
     navController: NavHostController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: OrderScreenViewModel = viewModel()       //Como es compartido debe estar aquí
 ) {
     NavHost(
         navController = navController,
         modifier = modifier,
-        startDestination = AppDestination.OrderScreen.route
+        startDestination = AppDestination.OrderScreen.route,
     ) {
         // PANTALLA 1: ORDER SCREEN
         composable(route = AppDestination.OrderScreen.route) {
-            val viewModel: OrderScreenViewModel = viewModel()
 
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
             val onBreadSelected = { bread: BreadType -> viewModel.onBreadSelected(bread) }
@@ -47,13 +47,14 @@ fun KebabKioskNavGraph(
 
         //PANTALLA 2: SUMMARY SCREEN
         composable(route = AppDestination.SummaryScreen.route) {
-            val viewModel: OrderScreenViewModel = viewModel()
+
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
             SummaryScreen(
                 pan = uiState.selectedBread.toString(),
                 carne = uiState.selectedMeat.toString(),
                 salsasYExtras = uiState.selectedToppings.toList(),
+                totalPedido = viewModel.calculateTotal()
             )
 
 
