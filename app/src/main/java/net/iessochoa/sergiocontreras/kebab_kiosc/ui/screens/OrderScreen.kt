@@ -35,6 +35,7 @@ import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 fun OrderScreen(
     uiState: OrderScreenUiState,
     onBreadSelected: (BreadType) -> Unit,
+    onMeatSelected: (MeatType) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -80,9 +81,7 @@ fun OrderScreen(
         MeatSelector(
             meats = MeatType.entries,
             selectedMeat = selectedMeat,
-            onMeatSelected = { newMeat ->
-                selectedMeat = newMeat
-            }
+            onMeatSelected = onMeatSelected
         )
 
         Spacer(modifier = Modifier.padding(top=16.dp))

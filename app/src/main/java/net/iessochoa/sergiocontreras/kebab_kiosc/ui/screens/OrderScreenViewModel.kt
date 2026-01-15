@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.BreadType
+import net.iessochoa.sergiocontreras.kebab_kiosc.model.MeatType
 
 
 class OrderScreenViewModel {
@@ -18,11 +19,18 @@ class OrderScreenViewModel {
             currentState.copy(
                 selectedBread = selectedBread
             )
+        }
     }
 
-    fun onMeatSelected() {
-
+    fun onMeatSelected(selectedMeat: MeatType) {
+        _uiState.update { currentState ->
+            currentState.copy(
+                selectedMeat = selectedMeat
+            )
+        }
     }
+
+
 
 
     fun onToppingToggled() {
