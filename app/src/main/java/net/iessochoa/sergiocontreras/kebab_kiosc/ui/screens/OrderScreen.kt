@@ -33,6 +33,8 @@ import net.iessochoa.sergiocontreras.kebab_kiosc.ui.theme.KebabkioskTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OrderScreen(
+    uiState: OrderScreenUiState,
+    onBreadSelected: (BreadType) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -40,9 +42,13 @@ fun OrderScreen(
     val toppings = ToppingRepository.getAllToppings()
 
     // --- ESTADO HARDCODEADO ---
-    var selectedBread by remember { mutableStateOf(BreadType.PITA) }
-    var selectedMeat by remember { mutableStateOf(MeatType.MIXED) }
-    var selectedToppings by remember { mutableStateOf(emptySet<Topping>()) }
+    //var selectedBread by remember { mutableStateOf(BreadType.PITA) }
+    //var selectedMeat by remember { mutableStateOf(MeatType.MIXED) }
+    //var selectedToppings by remember { mutableStateOf(emptySet<Topping>()) }
+
+    val selectedBread = uiState.selectedBread
+    val selectedMeat = uiState.selectedMeat
+    val selectedToppings = uiState.selectedToppings
 
     // --- LÓGICA DE NEGOCIO INCRUSTADA EN LA UI ---
     // Calculamos el precio en cada recomposición (ineficiente pero funciona)
@@ -61,9 +67,7 @@ fun OrderScreen(
         BreadSelector(
             breads = BreadType.entries,
             selectedBread = selectedBread,
-            onBreadSelected = { newBread ->
-                selectedBread = newBread // Modificación directa del estado
-            }
+            onBreadSelected = onBreadSelected
         )
 
         Spacer(modifier = Modifier.padding(top=16.dp))
