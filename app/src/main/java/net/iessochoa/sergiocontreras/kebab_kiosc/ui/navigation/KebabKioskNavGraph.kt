@@ -40,7 +40,8 @@ fun KebabKioskNavGraph(
                 onBreadSelected = onBreadSelected,
                 onMeatSelected = onMeatSelected,
                 onToppingToggled = onToppingToggled,
-                modifier = modifier
+                onOrderConfirmed = { navController.navigate(AppDestination.SummaryScreen.route) },
+                modifier = modifier,
             )
         }
 
@@ -52,7 +53,7 @@ fun KebabKioskNavGraph(
             SummaryScreen(
                 pan = uiState.selectedBread.toString(),
                 carne = uiState.selectedMeat.toString(),
-                salsasYExtras = uiState.selectedToppings.toList()
+                salsasYExtras = uiState.selectedToppings.toList(),
             )
 
 

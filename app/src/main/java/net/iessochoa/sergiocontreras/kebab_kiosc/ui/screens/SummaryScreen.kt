@@ -60,11 +60,11 @@ fun SummaryScreen(
 }
 
 @Composable
-fun OrderSummary(
+private fun OrderSummary(
     pan: String,
     carne: String,
     salsasYExtras: List<Topping>,
-    modifier: Modifier = Modifier // Añadimos un modifier para más flexibilidad
+    modifier: Modifier = Modifier, // Añadimos un modifier para más flexibilidad
 ) {
     Card(
         modifier = modifier
@@ -123,7 +123,7 @@ private fun SummaryItem(label: String, value: String) {
 
 
 @Composable
-fun BottomOrderBar(
+private fun BottomOrderBar(
     totalPrice: Double,
     onNextClick: () -> Unit
 ) {

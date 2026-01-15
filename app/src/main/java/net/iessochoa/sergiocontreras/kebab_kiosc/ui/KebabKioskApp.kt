@@ -33,7 +33,6 @@ fun KebabKioskApp(
     }
     */
 
-    // Pero el botón si que tiene que ser condicional a que la pila de navegación no vacía.
     val canNavigateBack = navController.previousBackStackEntry != null
 
 
@@ -47,7 +46,7 @@ fun KebabKioskApp(
                 if (canNavigateBack)
                     KebabTopAppBar(
                         title = "",
-                        canNavigateBack = canNavigateBack,
+                        canNavigateBack = true,
                         navigateUp = {navController.navigateUp()}
             ) },
                 modifier = Modifier
