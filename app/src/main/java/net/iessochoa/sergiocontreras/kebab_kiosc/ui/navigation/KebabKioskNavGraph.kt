@@ -13,6 +13,7 @@ import net.iessochoa.sergiocontreras.kebab_kiosc.model.MeatType
 import net.iessochoa.sergiocontreras.kebab_kiosc.model.Topping
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.screens.OrderScreen
 import net.iessochoa.sergiocontreras.kebab_kiosc.ui.screens.OrderScreenViewModel
+import net.iessochoa.sergiocontreras.kebab_kiosc.ui.screens.SummaryScreen
 
 
 @Composable
@@ -44,6 +45,18 @@ fun KebabKioskNavGraph(
         }
 
         //PANTALLA 2: SUMMARY SCREEN
+        composable(route = AppDestination.SummaryScreen.route) {
+            val viewModel: OrderScreenViewModel = viewModel()
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+            SummaryScreen(
+                pan = uiState.selectedBread.toString(),
+                carne = uiState.selectedMeat.toString(),
+                salsasYExtras = uiState.selectedToppings.toList()
+            )
+
+
+        }
 
 
 
