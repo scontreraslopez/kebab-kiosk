@@ -7,3 +7,5 @@ package net.iessochoa.sergiocontreras.kebab_kiosc.ui.navigation
 interface NavigationDestination {
     val route: String
 }
+
+// Nota en el examen no se pide títulos en las pantallas por eso no he metido titleRes ni title
